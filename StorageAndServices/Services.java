@@ -1,12 +1,12 @@
-package New;
+package StorageAndServices;
 
-public class Expense {
+public class Services {
     private String ItemQuantity;
     private String ItemName;
     private String ItemPrice;
     private String currentDateTime;
 
-    public Expense(String Name, String Quantity, String amount, String currDateTime) {
+    public Services(String Name, String Quantity, String amount, String currDateTime) {
         this.ItemQuantity = Quantity;
         this.ItemName = Name;
         this.ItemPrice = amount;
@@ -27,10 +27,14 @@ public class Expense {
 
     public String getAmount() {
         return ItemPrice;
-    } 
+    }
+
+    // public String getTotal(){
+        
+    // }
 
     @Override
     public String toString() {
-        return "Expense(Quantity=" + ItemQuantity + ", description=" + ItemName + ", amount=" + ItemPrice + ", Date = " + currentDateTime + ")";
+        return "Item= " + ItemName + ", Quantity= " + ItemQuantity +  ", amount=" + ItemPrice + ", Date = " + currentDateTime;
     }
 }

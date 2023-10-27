@@ -1,12 +1,16 @@
-package New;
-import java.time.LocalDateTime;
+package Main;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import StorageAndServices.ExpenseStorage;
+import StorageAndServices.Services;
+import Utils.Date;
 
 public class Tracker {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<Expense> expenses = ExpenseStorage.loadExpenses();
+        ArrayList<Services> expenses = ExpenseStorage.loadExpenses();
 
         while (true) {
             System.out.println("\nExpense Tracker Menu:");
@@ -15,31 +19,30 @@ public class Tracker {
             System.out.println("3. Delete an Expense");
             System.out.println("4. Clear Expenses");
             System.out.println("5. Exit");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
 
             switch (choice) {
                 case 1:
                     sc.nextLine();
-                    System.out.print("Enter Item name: ");
+                    System.out.print("\nEnter Item name: ");
                     String Name = sc.nextLine();
                     System.out.print("Enter quantity: ");
                     String Quantity = sc.nextLine();
                     System.out.print("Enter price of item: ");
                     String amount = sc.nextLine();
-                    LocalDateTime currentDateTime = LocalDateTime.now();
-                    String time = currentDateTime.toString();
-                    expenses.add(new Expense(Name, Quantity, amount, time));
+                    String time = Date.getDate();
+                    expenses.add(new Services(Name, Quantity, amount, time));
                     ExpenseStorage.saveExpenses(expenses);
                     break;
                 case 2:
-                    for (Expense e : expenses) {
+                    for (Services e : expenses) {
                         System.out.println(e);
                     }
                     break;
                 case 3:
                     sc.nextLine();
-                    System.out.println("Enter id: ");
+                    System.out.print("\nEnter id: ");
                     int id = sc.nextInt();
                     ExpenseStorage.DeleteExpenses(expenses, id);
                     break;
@@ -48,10 +51,10 @@ public class Tracker {
                     ExpenseStorage.Clear();
                     break;
                 case 5:
-                    System.out.println("Goodbye!");
+                    System.out.println("\nGoodbye!");
                     return;
                 default:
-                    System.out.println("Invalid choice. Please select from the menu.");
+                    System.out.println("\nInvalid choice. Please select from the menu.");
             }
         }
     }
