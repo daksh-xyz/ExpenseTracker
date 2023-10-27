@@ -9,7 +9,7 @@ public class ExpenseStorage{
     public static void saveExpenses(ArrayList<Services> expenses) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(FILE))) {
             for (Services e : expenses) {
-                writer.println(e.getName() + "," + e.getQuantity() + "," + e.getAmount() + "," + e.getDateTime());
+                writer.println(e.getId() + ","+ e.getName() + "," + e.getQuantity() + "," + e.getAmount() + "," + e.getDateTime());
             }
             writer.close();
         } catch (IOException e) {
@@ -22,7 +22,7 @@ public class ExpenseStorage{
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                expenses.add(new Services(parts[0], parts[1], parts[2], parts[3]));
+                expenses.add(new Services(parts[0], parts[1], parts[2], parts[3], parts[4]));
             }
         } catch (IOException e) {
             System.out.println("\nError loading expenses: " + e.getMessage());
@@ -32,7 +32,7 @@ public class ExpenseStorage{
 
     public static void DeleteExpenses(ArrayList<Services> expensed, int rowIndex) {
         if (rowIndex >= 0 && rowIndex < expenses.size()) {
-            expenses.remove(rowIndex);
+            expenses.remove(rowIndex - 1);
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE))) {
                 for (Services expense : expenses) {

@@ -5,12 +5,14 @@ public class Services {
     private String ItemName;
     private String ItemPrice;
     private String currentDateTime;
+    public String id;
 
-    public Services(String Name, String Quantity, String amount, String currDateTime) {
+    public Services(String id, String Name, String Quantity, String amount, String currDateTime) {
         this.ItemQuantity = Quantity;
         this.ItemName = Name;
         this.ItemPrice = amount;
         this.currentDateTime = currDateTime;
+        this.id = id;
     }
 
     public String getDateTime(){
@@ -29,12 +31,12 @@ public class Services {
         return ItemPrice;
     }
 
-    // public String getTotal(){
-        
-    // }
+    public String getId(){
+        return id;
+    }
 
     @Override
     public String toString() {
-        return "Item= " + ItemName + ", Quantity= " + ItemQuantity +  ", amount=" + ItemPrice + ", Date = " + currentDateTime;
+        return "Id= " + id + ", Item= " + ItemName + ", Quantity= " + ItemQuantity +  ", amount=" + ItemPrice + ", Date = " + currentDateTime;
     }
 }
