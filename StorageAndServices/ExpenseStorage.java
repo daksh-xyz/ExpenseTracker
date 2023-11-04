@@ -55,12 +55,12 @@ public class ExpenseStorage{
     public static void Clear() {
         if(expenses.size() == 0){
             System.out.println("\nNo data found, please enter new data before clearing !");
-        }
-        expenses.clear();
-        try (FileWriter fileWriter = new FileWriter(FILE, false)) {
-        } catch (IOException e) {
-            System.out.println("\nError clearing the CSV file: " + e.getMessage());
+        }else{
+            expenses.clear();
+            try (FileWriter fileWriter = new FileWriter(FILE, false)) {
+            } catch (IOException e) {
+                System.out.println("\nError clearing the CSV file: " + e.getMessage());
+            }
         }
     }
-    
 }

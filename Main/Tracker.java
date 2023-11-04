@@ -7,6 +7,7 @@ import StorageAndServices.ExpenseStorage;
 import StorageAndServices.Services;
 import Utils.Date;
 import Utils.Total;
+import Utils.Table;
 
 public class Tracker {
     public static void main(String[] args) {
@@ -40,9 +41,15 @@ public class Tracker {
                     case 2:
                         int ID = 1;
                         System.out.println();
-                        for (Services e : expenses) {
-                            System.out.println("ID= " + ID + " " + e);
-                            ID++;
+                        if(expenses.size() == 0){
+                            System.out.println("\nNo data found, add new data...");
+                        }else{
+                            System.out.println(Table.Header());
+                            for (Services e : expenses) {
+                                System.out.println("|\t" + ID + " " + e);
+                                System.out.println(Table.Lines());
+                                ID++;
+                            }
                         }
                         break;
                     

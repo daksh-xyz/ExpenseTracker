@@ -31,6 +31,6 @@ public class Services {
 
     @Override
     public String toString() {
-        return "Item= " + ItemName + ", Quantity= " + ItemQuantity +  ", amount=" + ItemPrice + ", Date = " + currentDateTime;
+        return "\t|\t"+ ItemName + "\t\t|\t  " + ItemQuantity +  "\t\t|\t " + ItemPrice + "\t\t|\t" + currentDateTime + "\t|";
     }
 }
