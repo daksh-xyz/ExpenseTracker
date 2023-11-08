@@ -3,11 +3,8 @@ package Main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import StorageAndServices.ExpenseStorage;
-import StorageAndServices.Services;
-import Utils.Date;
-import Utils.Total;
-import Utils.Table;
+import StorageAndServices.*;
+import Utils.*;
 
 public class Tracker {
     public static void main(String[] args) {
@@ -20,8 +17,7 @@ public class Tracker {
                 System.out.println("2. View Expenses");
                 System.out.println("3. Delete an Expense");
                 System.out.println("4. Clear Expenses");
-                System.out.println("5. Total Expense");
-                System.out.println("6. Exit");
+                System.out.println("5. Exit");
                 System.out.print("Enter your choice: ");
                 int choice = sc.nextInt();
 
@@ -44,12 +40,13 @@ public class Tracker {
                         if(expenses.size() == 0){
                             System.out.println("\nNo data found, add new data...");
                         }else{
-                            System.out.println(Table.Header());
+                            System.out.println(Table.HeaderCol());
                             for (Services e : expenses) {
                                 System.out.println("|\t" + ID + " " + e);
                                 System.out.println(Table.Lines());
                                 ID++;
                             }
+                            System.out.println(Table.TotalCol());
                         }
                         break;
                     
@@ -63,13 +60,10 @@ public class Tracker {
                     case 4:
                         ExpenseStorage.Clear();
                         ID = 1;
+                        System.out.println("\nExpenses cleared successfully !\n");
                         break;
-                    
+        
                     case 5:
-                        System.out.println("\nTotal expenditure: " + Total.getTotal());
-                        break;
-                    
-                    case 6:
                         System.out.println("\nGoodbye!");
                         return;
                     
