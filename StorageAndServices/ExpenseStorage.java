@@ -6,7 +6,7 @@ public class ExpenseStorage{
     static File FILE = new File("./DataBase/Data.csv");
     public static ArrayList<Services> expenses = new ArrayList<>();
 
-    public static void saveExpenses(ArrayList<Services> expenses) {
+    public static void saveExpenses(ArrayList<Services> expenses){
         try (PrintWriter writer = new PrintWriter(new FileWriter(FILE))) {
             for (Services e : expenses) {
                 writer.println(e.getName() + "," + e.getQuantity() + "," + e.getAmount() + "," + e.getDateTime());
@@ -17,7 +17,7 @@ public class ExpenseStorage{
         }
     }
 
-    public static ArrayList<Services> loadExpenses() {
+    public static ArrayList<Services> loadExpenses(){
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -30,7 +30,7 @@ public class ExpenseStorage{
         return expenses;
     }
 
-    public static void DeleteExpenses(ArrayList<Services> expensed, int rowIndex) {
+    public static void DeleteExpenses(ArrayList<Services> expensed, int rowIndex){
         if (rowIndex >= 0 && rowIndex <= expenses.size()) {
             expenses.remove(rowIndex - 1);
 
@@ -52,7 +52,7 @@ public class ExpenseStorage{
         }
     }
 
-    public static void Clear() {
+    public static void Clear(){
         if(expenses.size() == 0){
             System.out.println("\nNo data found, please enter new data before clearing !");
         }

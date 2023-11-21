@@ -14,8 +14,9 @@ public class Total {
                 int i = 2;
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split(",");
-                    int temp = Integer.parseInt(parts[i]);
-                    total += temp;
+                    int price = Integer.parseInt(parts[i]);
+                    int totalPrice = Integer.parseInt(parts[i-1]);
+                    total += (price*totalPrice);
                 }
             } catch (IOException e) {
                 System.out.println("\nError loading expenses: " + e.getMessage());
